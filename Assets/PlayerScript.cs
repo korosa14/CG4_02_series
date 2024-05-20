@@ -7,6 +7,11 @@ public class PlayerScript : MonoBehaviour
 {
     private bool isBlock = true;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        other.gameObject.SetActive(false);
+    }
+
     public Rigidbody rb;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +22,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveSpeed = 5.0f;
+        float moveSpeed = 8.0f;
         Vector3 v = rb.velocity;
 
 

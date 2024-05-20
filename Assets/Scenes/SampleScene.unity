@@ -722,6 +722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   block: {fileID: 1574910134363247878, guid: 7aa03d63c1e8340498fa1ee9e3d32d54, type: 3}
   goal: {fileID: 1009932866}
+  coin: {fileID: 1895513217765590991, guid: 270049208753d094992807da7733d88b, type: 3}
 --- !u!4 &1527396057
 Transform:
   m_ObjectHideFlags: 0

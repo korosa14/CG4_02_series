@@ -7,6 +7,7 @@ public class GameManagerScript : MonoBehaviour
 {
     public GameObject block;
     public GameObject goal;
+    public GameObject coin;
 
     int[,] map =
     {
@@ -48,8 +49,14 @@ public class GameManagerScript : MonoBehaviour
                 {
                     goal.transform.position = position;
                 }
+                //ÉRÉCÉì
+                if (map[y, x] == 3)
+                {
+                    Instantiate(coin, position, Quaternion.identity);
+                }
             }
         }
+        
     }
 
     // Update is called once per frame
