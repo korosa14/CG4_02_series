@@ -6,17 +6,20 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     private bool isBlock = true;
+    private AudioSource audioSource;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        other.gameObject.SetActive(false);
-    }
 
     public Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = gameObject.GetComponent<AudioSource>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        other.gameObject.SetActive(false);
+        audioSource.Play();
     }
 
     // Update is called once per frame
