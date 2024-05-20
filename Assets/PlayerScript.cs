@@ -14,12 +14,17 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
+        GameManagerScript.score = 0;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.SetActive(false);
-        audioSource.Play();
+        if(other.gameObject.tag=="COIN")
+        {
+            other.gameObject.SetActive(false);
+            audioSource.Play();
+            GameManagerScript.score += 1;
+        }   
     }
 
     // Update is called once per frame

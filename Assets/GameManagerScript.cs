@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManagerScript : MonoBehaviour
 {
     public GameObject block;
     public GameObject goal;
     public GameObject coin;
+    public TextMeshProUGUI scoreText;
+    public static int score = 0;
 
     int[,] map =
     {
@@ -70,5 +73,7 @@ public class GameManagerScript : MonoBehaviour
                 SceneManager.LoadScene("TitleScene");
             }
         }
+
+        scoreText.text = "SCORE" + score;
     }
 }
