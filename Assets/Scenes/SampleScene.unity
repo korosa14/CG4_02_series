@@ -5823,6 +5823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   block: {fileID: 1574910134363247878, guid: 7aa03d63c1e8340498fa1ee9e3d32d54, type: 3}
+  block2: {fileID: 3270308947306990849, guid: a85fa171ca6bc854c9333ba694cd6f59, type: 3}
   goal: {fileID: 1009932866}
   coin: {fileID: 1895513217765590991, guid: 270049208753d094992807da7733d88b, type: 3}
   scoreText: {fileID: 1596971699}
