@@ -11,6 +11,7 @@ public class GameManagerScript : MonoBehaviour
     public GameObject coin;
     public TextMeshProUGUI scoreText;
     public static int score = 0;
+    public GameObject goalParticle;
 
     int[,] map =
     {
@@ -56,6 +57,12 @@ public class GameManagerScript : MonoBehaviour
                 if (map[y, x] == 3)
                 {
                     Instantiate(coin, position, Quaternion.identity);
+                }
+                //ÉSÅ[Éãà íuê›íË
+                if (map[y,x]==2)
+                {
+                    goal.transform.position = position;
+                    goalParticle.transform.position = position;
                 }
             }
         }

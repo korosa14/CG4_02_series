@@ -8,23 +8,33 @@ public class PlayerScript : MonoBehaviour
     private bool isBlock = true;
     private AudioSource audioSource;
 
-
+    public GameObject bombParticle;
     public Rigidbody rb;
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
+        transform.rotation = Quaternion.Euler(0, 90, 0);
         audioSource = gameObject.GetComponent<AudioSource>();
         GameManagerScript.score = 0;
+
+        Vector3 rayPosition = transform.position + new Vector3(0.0f, 0.8f, 0.0f);
+        float distance = 0.9f;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag=="COIN")
+
+        if (other.gameObject.tag=="COIN")
         {
+            //爆破パーティクル発生
+            Instantiate(bombParticle, transform.position, Quaternion.identity);
+
             other.gameObject.SetActive(false);
             audioSource.Play();
             GameManagerScript.score += 1;
-        }   
+        }
     }
 
     // Update is called once per frame
@@ -33,24 +43,34 @@ public class PlayerScript : MonoBehaviour
         float moveSpeed = 8.0f;
         Vector3 v = rb.velocity;
 
-
         if (Input.GetKey(KeyCode.RightArrow))
         {
             v.x = moveSpeed;
+            transform.rotation = Quaternion.Euler(0, 90, 0);
+            animator.SetBool("Walk", true);
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            v.x = -moveSpeed;
+            transform.rotation = Quaternion.Euler(0, -90, 0);
+            animator.SetBool("Walk", true);
         }
         else
         {
             v.x = 0;
+            animator.SetBool("Walk", false);
         }
-
         rb.velocity = v;
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        //ジャンプアニメーション切り替え
+        if(isBlock==true)
         {
-            v.x = -moveSpeed;
+            animator.SetBool("Jump", false);
         }
-        rb.velocity = v;
-
+        else
+        {
+            animator.SetBool("Jump", true);
+        }
 
         //プレイヤーの下方向へレイを出す
         Vector3 rayPosition = transform.position;
