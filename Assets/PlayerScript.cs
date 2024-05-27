@@ -18,9 +18,6 @@ public class PlayerScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 90, 0);
         audioSource = gameObject.GetComponent<AudioSource>();
         GameManagerScript.score = 0;
-
-        Vector3 rayPosition = transform.position + new Vector3(0.0f, 0.8f, 0.0f);
-        float distance = 0.9f;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -73,9 +70,9 @@ public class PlayerScript : MonoBehaviour
         }
 
         //プレイヤーの下方向へレイを出す
-        Vector3 rayPosition = transform.position;
+        Vector3 rayPosition = transform.position + new Vector3(0.0f, 0.8f, 0.0f);
         Ray ray = new Ray(rayPosition, Vector3.down);
-        float distance = 0.6f;
+        float distance = 0.9f;
         isBlock = Physics.Raycast(ray, distance);
 
         if(isBlock==true)
